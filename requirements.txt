@@ -1,6 +1,6 @@
 djangorestframework-simplejwt==5.1.0
 django==3.2.0
-djangorestframework==3.9.0
+djangorestframework
 psycopg2-binary==2.9.3
 drf-yasg
 django-filter
