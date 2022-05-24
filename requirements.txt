@@ -1,4 +1,4 @@
-djangorestframework-simplejwt==5.1.0
+djangorestframework-simplejwt
 django==3.2.0
 djangorestframework
 psycopg2-binary==2.9.3

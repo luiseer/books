@@ -16,6 +16,7 @@ class Rack(models.Model):
 class BookItem(models.Model):
     rack = models.ForeignKey(Rack, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     stock = models.IntegerField(max_length=1, default=5)    
     def __str__(self) -> str:
         return f"{self.book} | {self.rack} | {self.id}"
