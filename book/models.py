@@ -9,7 +9,7 @@ class Book(models.Model):
     book_id = models.UUIDField(default=uuid.uuid4())
     genre = models.CharField(max_length=100)
     description = models.TextField(max_length=1000)
-    publication_date = models.DateField(null=True, blank=True)
+    date_of_publication = models.DateField(null=True, blank=True)
 
     
     def __str__(self):
