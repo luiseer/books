@@ -5,9 +5,10 @@ from .models import User
 from .permissions import IsOwnerOrReadOnly
 from rest_framework.permissions import AllowAny, IsAdminUser
 from rest_framework.decorators import action
-# Aqui irian importados el modelo de BookItem y su serializador
 from rest_framework.response import Response
 from  rest_framework import status
+from bookcase.models import BookItem
+from bookcase.serializers import BookItemSerializer
 
 # Create your views here.
 
@@ -19,5 +20,13 @@ class UserViewSet(viewsets.ModelViewSet):
         if self.action == "create":
             permission_classes = [AllowAny]
         else:
-            permission_classes = [IsAdminUser]
+            permission_classes = [AllowAny]
         return [permission() for permission in permission_classes]
+
+    @action(detail=True)
+    def my_books(self, request, pk=None):
+        user = User.objects.get(id=pk)
+        books = BookItem.objects.filter(current_owner=user)
+        serializer = BookItemSerializer(books, many=True)
+        return Response(serializer.data)
+    

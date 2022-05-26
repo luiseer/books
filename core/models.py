@@ -28,6 +28,7 @@ class User(AbstractUser):
     username = None
     country = models.CharField(max_length=50, null=True, default=None)
     email = models.EmailField(unique=True)
+    rented_books = models.IntegerField(default=0)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
   

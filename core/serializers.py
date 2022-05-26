@@ -6,8 +6,8 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("email", "password", "first_name",
-                  "last_name", "id", "date_joined", "last_login"
-                  )
+                  "last_name", "id", "date_joined", "last_login","rented_books")
+                  
         extra_kwargs = {
             "password": {"write_only": True},
             "id": {"read_only": True},
@@ -22,3 +22,6 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data["password"])
         user.save()
         return user
+    
+    def to_representation(self, data):
+        return super(UserSerializer, self).to_representation(data)
