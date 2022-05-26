@@ -1,7 +1,9 @@
-from .views import BookItemViewSet
+from .views import BookItemViewSet, BookItemLendViewSet
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register("book-item", BookItemViewSet)
-urlpatterns = router.urls
+router.register("book-item-lend", BookItemLendViewSet)
 
+
+urlpatterns = router.urls

@@ -1,4 +1,3 @@
-
 from rest_framework import serializers
 from .models import Book
 
@@ -12,3 +11,6 @@ class BookSerializer(serializers.ModelSerializer):
             
             "book_id": {"read_only": True}
         }
+
+    def to_representation(self, data):
+        return super(BookSerializer, self).to_representation(data)
