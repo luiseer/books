@@ -10,6 +10,7 @@ class Rack(models.Model):
     name = models.CharField(max_length=100)
     def __str__(self):
         return self.name    
+
 class BookItem(models.Model):
     
     rack = models.ForeignKey(Rack, on_delete=models.CASCADE)

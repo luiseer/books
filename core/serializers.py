@@ -22,3 +22,6 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data["password"])
         user.save()
         return user
+    
+    def to_representation(self, data):
+        return super(UserSerializer, self).to_representation(data)
