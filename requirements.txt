@@ -7,3 +7,4 @@ django-filter
 pytest==7.1.1
 pytest-cov
 pytest-django==3.7.0
+gunicorn==20.1.0  
