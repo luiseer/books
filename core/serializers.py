@@ -13,6 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
             "id": {"read_only": True},
             "date_joined": {"read_only": True},
             "last_login": {"read_only": True},
+            "rented_books": {"read_only": True}
         }
 
     def create(self, validated_data):
