@@ -1,3 +1,5 @@
+import os
+
 """
 Django settings for library_app project.
 
@@ -18,9 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+my_secret_2 = (os.environ.get("SECRET_KEY", 'dev default value'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-dzf935!nk)*q30d#dw*9#+%!&ac(7v9lx*ajqu0$l3699tcxfq'
+SECRET_KEY = my_secret_2
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -143,6 +146,9 @@ REST_FRAMEWORK = {
 }
 
 from datetime import timedelta
+import os
+my_secret = (os.environ.get("SECRET_KEY_TOKEN", 'dev default value'))
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=5),
@@ -152,7 +158,7 @@ SIMPLE_JWT = {
     'UPDATE_LAST_LOGIN': False,
 
     'ALGORITHM': 'HS256',
-    'SIGNING_KEY': SECRET_KEY,
+    'SIGNING_KEY': my_secret,
     'VERIFYING_KEY': None,
     'AUDIENCE': None,
     'ISSUER': None,
@@ -183,3 +189,7 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS
 }
+
+
+import django_heroku
+django_heroku.settings(locals()) 
